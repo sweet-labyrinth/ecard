@@ -1,1 +1,34 @@
-Hello world
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body style='margin: 0;'>
+
+	<img style='width: 100%;' src='https://i.pinimg.com/736x/af/f5/32/aff532a6aee9e8cf9c10ab6d2e6831ba.jpg'>
+	<p style="color: #7f1651; padding: 0 70px; position: absolute; top: 250px; font-size: 100px; font-family: 'VT323', monospace;"
+		id="demo"></p>
+	<script>
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+
+		var i = 0;
+		var txt = decodeURIComponent(escape(window.atob(urlParams.get('content'))));
+		var speed = 50;
+
+		function typeWriter() {
+			if (i < txt.length) {
+				document.getElementById("demo").innerHTML += txt.charAt(i);
+				i++;
+				setTimeout(typeWriter, speed);
+			}
+		}
+		window.onload = typeWriter;
+	</script>
+</body>
+
+</html>
