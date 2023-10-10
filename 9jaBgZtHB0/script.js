@@ -6,33 +6,12 @@ document.getElementById("message").innerHTML = txt;
 const board = document.querySelector('.board');
 const clone = document.querySelector('.clone');
 const overlay = document.querySelector('.overlay');
-const reset = document.querySelector('.reset');
 const tileOptions = ['erupt', 'ptero', 'tri', 'ahahah', 'egg', 'dino'];
 
 const state = {
   selections: [],
   boardLocked: false,
   matches: 0 };
-
-
-reset.addEventListener('click', () => {
-  if (state.boardLocked) return;
-  resetGame();
-});
-
-function resetGame() {
-  state.boardLocked = true;
-  state.selections = [];
-  state.matches = 0;
-
-  document.querySelectorAll('.cube').forEach(tile => {
-    tile.removeEventListener('click', () => selectTile(tile));
-    tile.remove();
-  });
-
-  overlay.classList.add('hidden');
-  createBoard();
-}
 
 function createBoard() {
   const tiles = shuffleArray([...tileOptions, ...tileOptions]);

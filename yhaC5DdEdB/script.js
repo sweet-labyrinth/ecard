@@ -1,7 +1,4 @@
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-var txt = decodeURIComponent(escape(window.atob(urlParams.get('content'))));
-document.getElementById("message").innerHTML = txt;
+
 
 
 // globalConfig.js
@@ -1247,11 +1244,11 @@ function renderScoreHud() {
 		scoreNode.style.display = 'none';
 		cubeCountNode.style.opacity = 1;
 	} else {
-		scoreNode.innerText = `SCORE: ${state.game.score}`;
+		scoreNode.innerText = `Điểm: ${state.game.score}`;
 		scoreNode.style.display = 'block';
 		cubeCountNode.style.opacity = 0.65 ;
 	}
-	cubeCountNode.innerText = `CUBES SMASHED: ${state.game.cubeCount}`;
+	cubeCountNode.innerText = `Đã chém được: ${state.game.cubeCount}`;
 }
 
 renderScoreHud();
@@ -1291,7 +1288,6 @@ const menuPauseNode = $('.menu--pause');
 const menuScoreNode = $('.menu--score');
 
 const finalScoreLblNode = $('.final-score-lbl');
-const highScoreLblNode = $('.high-score-lbl');
 
 
 
@@ -1317,11 +1313,6 @@ function renderMenus() {
 			break;
 		case MENU_SCORE:
 			finalScoreLblNode.textContent = formatNumber(state.game.score);
-			if (isNewHighScore()) {
-				highScoreLblNode.textContent = 'New High Score!';
-			} else {
-				highScoreLblNode.textContent = `High Score: ${formatNumber(getHighScore())}`;
-			}
 			showMenu(menuScoreNode);
 			break;
 	}
@@ -1357,7 +1348,6 @@ handleClick($('.play-again-btn'), () => {
 	resetGame();
 });
 
-handleClick($('.menu-btn--score'), () => setActiveMenu(MENU_MAIN));
 
 
 
@@ -1383,8 +1373,6 @@ handleClick($('.play-again-btn'), () => {
 	setActiveMenu(null);
 	resetGame();
 });
-
-handleClick($('.menu-btn--score'), () => setActiveMenu(MENU_MAIN));
 
 
 
@@ -1463,8 +1451,11 @@ function resumeGame() {
 
 function endGame() {
 	handleCanvasPointerUp();
-	if (isNewHighScore()) {
-		setHighScore(state.game.score);
+	if (state.game.score > 200) {
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		var txt = decodeURIComponent(escape(window.atob(urlParams.get('content'))));
+		document.getElementById("message").innerHTML = txt;
 	}
 	setActiveMenu(MENU_SCORE);
 }

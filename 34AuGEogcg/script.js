@@ -279,6 +279,12 @@ class Game {
             return this.endGame();
         }
         this.scoreContainer.innerHTML = String(this.blocks.length - 1);
+        if(this.blocks.length > 9) {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            var txt = decodeURIComponent(escape(window.atob(urlParams.get('content'))));
+            document.getElementById("message").innerHTML = txt;
+        }
         let newKidOnTheBlock = new Block(lastBlock);
         this.newBlocks.add(newKidOnTheBlock.mesh);
         this.blocks.push(newKidOnTheBlock);

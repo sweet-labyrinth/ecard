@@ -73,10 +73,12 @@ html, body {
   font-size: 30px;
 }
 #container #instructions {
+  padding: 53px;
   position: absolute;
-  width: 100%;
   top: 16vh;
   left: 0;
+  right: 0;
+  line-height: 30px;
   text-align: center;
   transition: opacity 0.5s ease, transform 0.5s ease;
   opacity: 0;
@@ -106,4 +108,9 @@ html, body {
 }
 a{
   display: none;
+}
+
+#message{
+  padding: 53px;
+  line-height: 30px;
 }

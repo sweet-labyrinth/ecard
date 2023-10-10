@@ -13,7 +13,7 @@
 <div id="container">
 	<div id="game"></div>
 	<div id="score">0</div>
-	<div id="instructions">Chạm để đặt gạch</div>
+	<div id="instructions">Chạm để đặt gạch, đạt 10 điểm để xem lời nhắn nhé</div>
 	<div class="game-over">
 		<p id="message">You did great, you're the best.</p>
 		<p>Chạm để chơi lại</p>
@@ -28,10 +28,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script><script  src="./script.js"></script>
 <script>
-	const queryString = window.location.search;
-	const urlParams = new URLSearchParams(queryString);
-	var txt = decodeURIComponent(escape(window.atob(urlParams.get('content'))));
-	document.getElementById("message").innerHTML = txt;
+	
 
 </script>
 
